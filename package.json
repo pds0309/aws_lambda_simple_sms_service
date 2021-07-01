@@ -1,7 +1,7 @@
 {
   "name": "aws_lambda_simple_sms_service",
   "version": "1.0.0",
-  "description": "AWS Lambda로 만드는 초 간단 코로나 정보 문자 메시지 예약 전송 서비스",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/pds0309/aws_lambda_simple_sms_service/issues"
   },
-  "homepage": "https://github.com/pds0309/aws_lambda_simple_sms_service#readme"
+  "homepage": "https://github.com/pds0309/aws_lambda_simple_sms_service#readme",
+  "dependencies": {
+    "moment": "^2.29.1",
+    "xml-js": "^1.6.11"
+  }
 }
