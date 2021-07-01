@@ -4,14 +4,12 @@ AWS Lambda로 만드는 초 간단 코로나 정보 문자 메시지 예약 전�
 
 ----  
   
-> 해당 게시글의 람다 서비스를 바탕으로 작성하였습니다.   
-읽지 않아도 현재 포스트의 실습은 가능합니다.
-
 **1편 - [AWS Lambda로 만드는 초간단 코로나 정보 문자메시지 전송 서비스(1)](https://pds0309.github.io/lambdasms1/)** 
   
 **2편 - [AWS Lambda로 만드는 초간단 코로나 정보 문자메시지 전송 서비스(2)](https://pds0309.github.io/lambdasms2/)**  
   
-**[Github Actions를 이용해 람다 서비스 배포 자동화를 해보자](https://pds0309.github.io/lambddeploy/)**
+**[Github Actions를 이용해 람다 서비스 배포 자동화를 해보자](https://pds0309.github.io/lambddeploy/)**  
+
 ----
     
     
