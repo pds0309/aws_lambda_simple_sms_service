@@ -15,7 +15,7 @@ AWS Lambda로 만드는 초 간단 코로나 정보 문자 메시지 예약 전�
     
 **활용**  
 
-* (공공데이터포털-코로나19 감염 현황 Open-Api)[https://www.data.go.kr/tcs/dss/selectApiDataDetailView.do?publicDataPk=15043376]
+* [공공데이터포털-코로나19 감염 현황 Open-Api](https://www.data.go.kr/tcs/dss/selectApiDataDetailView.do?publicDataPk=15043376)
 * AWS Lambda - Runtime: node.js 14.x
 * Amazon Simple Notification Service (Amazon SNS) 
 * Amazon EventBridge  
