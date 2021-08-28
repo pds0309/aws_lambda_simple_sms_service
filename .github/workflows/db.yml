@@ -1,8 +1,8 @@
-name: lambda-CoronaInfo-CI
+name: lambda-CoronaDynamo-CI
 on:
   push:
     branches:
-      - info
+      - db
 
 jobs:
   deploy_source:
@@ -33,5 +33,5 @@ jobs:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: ap-northeast-2
-          function_name: CoronaInfo
+          function_name: CoronaDynamo
           zip_file: bundle.zip
