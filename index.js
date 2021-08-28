@@ -8,8 +8,8 @@ exports.handler = async (event) => {
     let dataString = '';
     let xmlToJson;
     let js;
-
-    let reqq = "http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=0%2BOtzppXZgysqfWZNXNX8WVa8zRSlUtg5ARMUmPSc0En9D3LVNdYbYOIiXNv%2BeVEbAI3mz39p5ZKmo%2BzKtxk2w%3D%3D";
+    let papakey = process.env.PAPAKEY;
+    let reqq = "http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey="+papakey;
     reqq = reqq + "&startCreateDt="+ysday +"&endCreateDt="+today;
     const response = await new Promise((resolve, reject) => {
          const req = https.get(reqq, function(res) {

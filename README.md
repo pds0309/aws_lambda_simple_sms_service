@@ -34,3 +34,14 @@ AWS Lambda로 만드는 초 간단 코로나 정보 문자 메시지 예약 전�
     * 유저 정보가 저장된 DynamoDB를 스캔하는 CoronaDynamo 람다함수가 호출되어 메시지 전달 대상으로 전달됨.  
       
   
+**대략적인 구조**  
+ 
+  
+![covid](https://user-images.githubusercontent.com/76927397/131205710-85165ea5-11e5-4d48-bbc6-af3299918876.PNG)
+  
+  
+**Branch**  
+  
+* Info -> CoronaInfo (covid 일일 데이터수집)
+* master -> CoronaSmsService (메시지전송)
+* db -> CoronaDynamo (유저 테이블 조회)
