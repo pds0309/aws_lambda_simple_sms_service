@@ -3,6 +3,7 @@ AWS.config.region = 'ap-northeast-2';
 const lambda = new AWS.Lambda();
 
 exports.handler = function(event, context, callback) {
+    const sqs = new AWS.SQS({ apiVersion: '2012-11-05' });
     let corona = {
     FunctionName: 'CoronaInfo',
     InvocationType: 'RequestResponse',
@@ -15,8 +16,8 @@ exports.handler = function(event, context, callback) {
    };
    let coToday = "";
    let coysday = "";
-
    lambda.invoke(corona, function(err, data ) {
+       try{
        if (err) {
             context.fail(err);
         }
@@ -32,7 +33,7 @@ exports.handler = function(event, context, callback) {
             var tdExamCnt = Number(allExamCnt) - Number(coysday.examCnt._text);
             var tdClearCnt = Number(allClearCnt) - Number(coysday.clearCnt._text);
             var tdDeathCnt = Number(allDeathCnt) - Number(coysday.deathCnt._text);
-
+            
             var message = "확진자:"+allDecideCnt+"▲"+tdDecideCnt+
 					" 검사자:"+allExamCnt+"▲"+tdExamCnt+
 					" 격리해제:"+allClearCnt+"▲"+tdClearCnt+
@@ -59,6 +60,22 @@ exports.handler = function(event, context, callback) {
                 }
             });
         }
-   });
+       }
+       catch { 
+            const params = {
+                MessageBody: "전송실패",
+                QueueUrl: "https://sqs.ap-northeast-2.amazonaws.com/157823348930/CoronaSmsNotUpdatedSqs"
+            };
+            try {
+                const response = sqs.sendMessage(params).promise();
+                response.then(function(data){ callback(JSON.stringify(data));});
+                console.log(response);
+                console.log(params);
+            }
+            catch (e) { 
+                console.log(e);
+                }
+        }       
+    });
 
 };
