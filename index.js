@@ -26,17 +26,11 @@ exports.handler = function(event, context, callback) {
             coToday = (JSON.parse(data.Payload))[0];
             coysday = (JSON.parse(data.Payload))[1];
             var allDecideCnt = coToday.decideCnt._text;
-            var allExamCnt = coToday.examCnt._text;
-            var allClearCnt = coToday.clearCnt._text;
             var allDeathCnt = coToday.deathCnt._text;
             var tdDecideCnt = Number(allDecideCnt)- Number(coysday.decideCnt._text) + "";
-            var tdExamCnt = Number(allExamCnt) - Number(coysday.examCnt._text);
-            var tdClearCnt = Number(allClearCnt) - Number(coysday.clearCnt._text);
             var tdDeathCnt = Number(allDeathCnt) - Number(coysday.deathCnt._text);
             
             var message = "확진자:"+allDecideCnt+"▲"+tdDecideCnt+
-					" 검사자:"+allExamCnt+"▲"+tdExamCnt+
-					" 격리해제:"+allClearCnt+"▲"+tdClearCnt+
 					" 사망자:"+allDeathCnt+"▲"+tdDeathCnt;
 			var paramsForSMS = [];
 			var publishTextPromise;
@@ -63,8 +57,9 @@ exports.handler = function(event, context, callback) {
        }
        catch { 
             const params = {
+                MessageGroupId: "group1",
                 MessageBody: "전송실패",
-                QueueUrl: "https://sqs.ap-northeast-2.amazonaws.com/157823348930/CoronaSmsNotUpdatedSqs"
+                QueueUrl: "https://sqs.ap-northeast-2.amazonaws.com/157823348930/CoronaQ.fifo"
             };
             try {
                 const response = sqs.sendMessage(params).promise();
